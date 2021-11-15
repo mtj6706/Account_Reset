@@ -19,9 +19,9 @@ for user in ${delUsers[@]}; do
 	fi
 
 	timestamp=$(date +"%Y-%m-%d:%T")
-	tar -cjv -f "${user}_Archive/${user}_${timestamp}.tar.bz" -C "/home/${user}/"
+	tar -cvj -f "./${user}_Archive/${user}_${timestamp}.tar.bz" /home/${user}/*
 
 	killall -u $user
 	crontab -r -u $user
-	# userdel -r $user
+	userdel -r $user
 done
